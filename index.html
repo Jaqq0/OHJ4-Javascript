@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHJ4 Javascript</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="topnav">
+        <a href="index.html">#409:Lämpötilamuunnin</a>
+        <a href="">#410:Kaverilista</a>
+        <a href="">#411:Lomakkeen validointi</a>
+        <a href="">#412:Sikanoppapeli</a>
+        <a href="">#413:Hedelmäpeli</a>
+        <a href="">#457:Clicker-peli</a>
+    </nav>
+    <h2>Lämpötilamuunnin</h2>
+    <label for="lämpötila">Syötä lämpötila:</label>
+    <input type="number" id="lämpötila">
+    <select id="lämpötilamuunnin">
+        <option value="fahrenheit">Fahrenheit -> Celsius</option>
+        <option value="celsius">Celsius -> Fahrenheit</option>
+    </select>
+    <button onclick="muunnaLämpötila()">Muunna</button>
+    <div id="tulos"></div>
+    <script>
+        function muunnaLämpötila() {
+            const lämpötila = parseFloat(document.getElementById('lämpötila').value);
+            const muunnin = document.getElementById('lämpötilamuunnin').value;
+            
+            if (isNaN(lämpötila)) {
+                document.getElementById('tulos').innerText = 'Syötä kelvollinen lämpötila.';
+                return;
+            }
+            if (muunnin === "fahrenheit" && lämpötila < -459.67) {
+                document.getElementById('tulos').innerText = 'Lämpötila ei voi olla absoluuttista nollapistettä kylmempi.';
+                return;
+            } else if (muunnin === "celsius" && lämpötila < -273.15) {
+                document.getElementById('tulos').innerText = 'Lämpötila ei voi olla absoluuttista nollapistettä kylmempi.';
+                return;
+            }            
+            let tulos;
+            if (muunnin === 'fahrenheit') {
+                tulos = (lämpötila - 32) * 5 / 9; 
+                document.getElementById('tulos').innerText = `${lämpötila} °F on ${tulos.toFixed(2)} °C`;
+            } else {
+                tulos = (lämpötila * 9 / 5) + 32;
+                document.getElementById('tulos').innerText = `${lämpötila} °C on ${tulos.toFixed(2)} °F`;
+            }
+
+            document.getElementById('lämpötila').value = '';
+        }
+    </script>
+</body>
+</html>
