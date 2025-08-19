@@ -1,3 +1,7 @@
+let desimaalit = 1;
+function valitsedesimaalit(n) {
+    desimaalit = n;
+}
 function muunnaLämpötila() {
             const lämpötila = parseFloat(document.getElementById('lämpötila').value);
             const muunnin = document.getElementById('lämpötilamuunnin').value;
@@ -16,10 +20,10 @@ function muunnaLämpötila() {
             let tulos;
             if (muunnin === 'fahrenheit') {
                 tulos = (lämpötila - 32) * 5 / 9; 
-                document.getElementById('tulos').innerText = `${lämpötila} °F on ${tulos.toFixed(2)} °C`;
+                document.getElementById('tulos').innerText = `${lämpötila} °F on ${tulos.toFixed(desimaalit)} °C`;
             } else {
                 tulos = (lämpötila * 9 / 5) + 32;
-                document.getElementById('tulos').innerText = `${lämpötila} °C on ${tulos.toFixed(2)} °F`;
+                document.getElementById('tulos').innerText = `${lämpötila} °C on ${tulos.toFixed(desimaalit)} °F`;
             }
 
             document.getElementById('lämpötila').value = '';

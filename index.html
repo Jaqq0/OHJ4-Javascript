@@ -22,6 +22,15 @@
         <option value="celsius">Celsius -> Fahrenheit</option>
     </select>
     <button onclick="muunnaLämpötila()">Muunna</button>
+    <label>
+        <input type="radio" name="dec" value="1" onclick="valitsedesimaalit(1)" checked> 1 desimaali
+    </label>
+    <label>
+        <input type="radio" name="dec" value="2" onclick="valitsedesimaalit(2)"> 2 desimaalia
+    </label>
+    <label>
+        <input type="radio" name="dec" value="3" onclick="valitsedesimaalit(3)"> 3 desimaalia
+    </label>
     <div id="tulos"></div>
     <script src="lampotila.js"></script>
 </body>
