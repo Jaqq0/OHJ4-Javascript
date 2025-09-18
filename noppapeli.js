@@ -57,7 +57,7 @@ function checkWin() {
             updateUI(`${p} voitti pelin ${scores[p]} pisteellä!`);
             document.getElementById("roll").disabled = true;
             document.getElementById("hold").disabled = true;
-            document.getElementById("next").disabled = true;
+            document.getElementById("restart").style.display = "inline-block";
             return true;
         }
     }
@@ -108,7 +108,24 @@ function hold() {
     }
 }
 
+function restartGame() {
+    document.getElementById("setup").style.display = "block";
+    document.getElementById("game").style.display = "none";
+
+    document.getElementById("roll").disabled = false;
+    document.getElementById("hold").disabled = false;
+    document.getElementById("restart").style.display = "none";
+
+    players = [];
+    scores = {};
+    currentPlayerIndex = 0;
+    roundScore = 0;
+    version = 1;
+    target = 100;
+    consecutiveDoubles = 0;
+}
+
 document.getElementById("startGame").addEventListener("click", startGame);
 document.getElementById("roll").addEventListener("click", roll);
 document.getElementById("hold").addEventListener("click", hold);
-document.getElementById("next").addEventListener("click", nextPlayer);
+document.getElementById("restart").addEventListener("click", restartGame);
