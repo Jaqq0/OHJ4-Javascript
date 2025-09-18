@@ -16,5 +16,27 @@
         <a href="hedelmapeli.html">#413:Hedelmäpeli</a>
         <a href="clicker.html">#457:Clicker-peli</a>
     </nav>
+    <div id="setup">
+        <label>Pelaajien määrä: <input type="number" id="numPlayers" min="2" value="2"></label>
+        <button id="startGame">Aloita peli</button>
+        <br>
+        <label>Pistetavoite: <input type="number" id="targetScore" value="100"></label>
+        <br>
+        <label>Pelin versio:
+            <select id="version">
+                <option value="1">Yksi noppa</option>
+                <option value="2">Kaksi noppaa</option>
+            </select>
+        </label>
+    </div>
+    <div id="game" style="display:none;">
+        <p id="status"></p>
+        <p id="turnInfo"></p>
+        <button id="roll">Heitä noppaa</button>
+        <button id="hold">Pidä</button>
+        <button id="next">Seuraava pelaaja</button>
+        <ul id="scores"></ul>
+    </div>
+    <script src="noppapeli.js"></script>
 </body>
 </html>
