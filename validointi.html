@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OHJ4 Lomakkeen validointi</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .success {
+            color: green;
+            font-size: 1em;
+        }
+        form {
+            display: grid;
+            align-items: center;
+            max-width: 400px;
+            margin: 0;
+
+        }
+        label {
+            text-align: right;
+        }
+        input, select, textarea {
+            margin-top: 5px;
+            padding: 3px;
+            font-size: 1em;
+        }
+    </style>
 </head>
 <body>
     <nav class="topnav">
@@ -16,5 +41,69 @@
         <a href="hedelmapeli.html">#413:Hedelmäpeli</a>
         <a href="clicker.html">#457:Clicker-peli</a>
     </nav>
+    <h1>Rekisteröitymislomake</h1>
+    <p>Siirry kentästä toiseen tab-näppäimellä.</p>
+
+    <form id="regForm" novalidate>
+        <label>Käyttäjä ID:
+            <input type="text" id="userid">
+            <span class="error" id="useridError"></span>
+        </label>
+
+        <label>Salasana:
+            <input type="password" id="password">
+            <span class="error" id="passwordError"></span>
+        </label>
+
+        <label>Nimi:
+            <input type="text" id="name">
+            <span class="error" id="nameError"></span>
+        </label>
+
+        <label>Osoite:
+            <input type="text" id="address">
+            <span class="error" id="addressError"></span>
+        </label>
+
+        <label>Maa:
+            <select id="country">
+                <option value="">Valitse maa</option>
+                <option value="finland">Suomi</option>
+                <option value="sweden">Ruotsi</option>
+                <option value="norway">Norja</option>
+                <option value="denmark">Tanska</option>
+                <option value="other">Muu</option>
+            </select>
+        </label>
+
+        <label>Postinumero:
+            <input type="text" id="zip">
+            <span class="error" id="zipError"></span>
+        </label>
+
+        <label>Sähköposti:
+            <input type="email" id="email">
+            <span class="error" id="emailError"></span> 
+        </label>
+
+        <label>Sukupuoli:
+            <input type="radio" name="gender" value="Mies"> Mies
+            <input type="radio" name="gender" value="Nainen"> Nainen
+        </label>
+        <span class="error" id="genderError"></span>
+
+        <label>Kieli:
+            <input type="checkbox" name="language" value="Suomi"> Suomi
+            <input type="checkbox" name="language" value="Muu"> Muu kuin Suomi
+        </label>
+
+        <label>Lisätietoja:
+            <textarea id="extra"></textarea>
+        </label>
+
+        <button type="submit">Lähetä</button>
+        <p class="success" id="successMessage"></p>
+    </form>
+    <script src="validointi.js"></script>
 </body>
 </html>
