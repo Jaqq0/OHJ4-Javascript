@@ -5,6 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OHJ4 Clicker-peli</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            user-select: none;
+        }
+        .main {
+            display: flex;
+            gap: 200px;
+        }
+        .left h3 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 50px;
+        }
+        .nut-img {
+            width: 300px;
+        }
+        .nut-img:hover {
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        .nut-img:active {
+            transform: scale(0.95);
+        }
+        .upgrade {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 300px;
+            height: 60px;
+            border: 4px solid white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .upgrade:hover {
+            cursor: pointer;
+            background-color: gray;
+        }
+        .upgrade:active {
+            transform: scale(0.95);
+        }
+        .mid-section h4 {
+            margin: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        .mid-section p {
+            margin: 0;
+        }
+        .upgrade-img {
+            width: 50px;
+        }
+        .nut-image {
+            width: 20px;
+            height: 20px;
+        }
+        .cost-info {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
 </head>
 <body>
     <nav class="topnav">
@@ -16,5 +82,31 @@
         <a href="hedelmapeli.html">#413:Hedelmäpeli</a>
         <a href="clicker.html">#457:Clicker-peli</a>
     </nav>
+    <section>
+        <div class="main">
+            <div class="left">
+                <h3>Nut: <span class="nut-cost">0</span></h3>
+                <img src="./img/nut.png" alt="" class="nut-img" onclick="incrementNut()" draggable="false">
+            </div>
+            <div class="right">
+                <div class="upgrade" onclick="buyBolt()">
+                    <div class="left-section">
+                        <img src="./img/bolt.png" alt="" class="upgrade-img">
+                    </div>
+                    <div class="mid-section">
+                        <h4>Strong bolt</h4>
+                        <div class="cost-info">
+                            <p>cost: <span class="bolt-cost">10</span></p>
+                            <img src="./img/nut.png" alt="" class="nut-image">
+                        </div>
+                    </div>
+                    <div class="right-section">
+                        level 0
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="clicker.js"></script>
 </body>
 </html>
