@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+body {
+    background-color: #282c34;
+    margin-top: 50px;
+}
 .topnav {
     background-color: #333;
     overflow: hidden;
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 10;
 }
 .topnav a {
     float: left;
@@ -24,19 +31,28 @@
 .game {
     display: grid;
     place-items: center;
-    height: 100vh;
+    height: 99vh;
     color: white;
     user-select: none;
     position: relative;
+    font-family: "Quicksand", sans-serif;
+    margin-top: -50px;
 }
 .main {
     display: flex;
     gap: 200px;
 }
-.left h3 {
+.left {
     text-align: center;
     font-size: 30px;
     margin-bottom: 50px;
+}
+
+.nut-cost {
+    font-size: 32px;
+    color: bisque;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px #000000;
 }
 .nut-img {
     width: 300px;
