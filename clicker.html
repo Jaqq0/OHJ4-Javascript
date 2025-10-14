@@ -5,111 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OHJ4 Clicker-peli</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .topnav {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        body {
-            display: grid;
-            place-items: center;
-            height: 100vh;
-            background-color: black;
-            color: white;
-            user-select: none;
-            position: relative;
-        }
-        .main {
-            display: flex;
-            gap: 200px;
-        }
-        .left h3 {
-            text-align: center;
-            font-size: 30px;
-            margin-bottom: 50px;
-        }
-        .nut-img {
-            width: 300px;
-        }
-        .nut-img:hover {
-            cursor: pointer;
-            opacity: 0.8;
-        }
-        .nut-img:active {
-            transform: scale(0.95);
-        }
-        .upgrade {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 300px;
-            height: 60px;
-            border: 4px solid white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            position: relative;
-            margin-bottom: 20px;
-        }
-        .upgrade:hover {
-            cursor: pointer;
-            background-color: gray;
-        }
-        .upgrade:active {
-            transform: scale(0.95);
-        }
-        .mid-section h4 {
-            margin: 0;
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-        .mid-section p {
-            margin: 0;
-        }
-        .upgrade-img {
-            width: 50px;
-        }
-        .nut-image {
-            width: 20px;
-            height: 20px;
-        }
-        .cost-info {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .nlvlinfo {
-            position: absolute;
-            right: -105px;
-            background-color: gray;
-            height: 80px;
-            width: 100px;
-            text-align: center;
-            display: none;
-        }
-        .upgrade:hover .nlvlinfo {
-            display: block;
-        }
-        .statistics {
-            position: absolute;
-            bottom: 0;
-            width: 450px;
-            padding: 30px;
-            border: 2px solid white;
-            border-top-right-radius: 10px;
-            border-top-left-radius: 10px;
-            left: 50%;
-            transform: translate(-50%);
-        }
-
-        .texts {
-            display: flex;
-            gap: 100px;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 20px;
-        }
-    </style>
 </head>
 <body>
     <nav class="topnav">
@@ -121,7 +16,7 @@
         <a href="hedelmapeli.html">#413:Hedelmäpeli</a>
         <a href="clicker.html">#457:Clicker-peli</a>
     </nav>
-    <section>
+    <section class="game">
         <div class="main">
             <div class="left">
                 <h3>Nut: <span class="nut-cost">50000</span></h3>
