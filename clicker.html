@@ -6,6 +6,11 @@
     <title>OHJ4 Clicker-peli</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        .topnav {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
         body {
             display: grid;
             place-items: center;
@@ -13,6 +18,7 @@
             background-color: black;
             color: white;
             user-select: none;
+            position: relative;
         }
         .main {
             display: flex;
@@ -42,6 +48,8 @@
             border: 4px solid white;
             padding: 10px 20px;
             border-radius: 5px;
+            position: relative;
+            margin-bottom: 20px;
         }
         .upgrade:hover {
             cursor: pointer;
@@ -70,6 +78,37 @@
             align-items: center;
             gap: 5px;
         }
+        .nlvlinfo {
+            position: absolute;
+            right: -105px;
+            background-color: gray;
+            height: 80px;
+            width: 100px;
+            text-align: center;
+            display: none;
+        }
+        .upgrade:hover .nlvlinfo {
+            display: block;
+        }
+        .statistics {
+            position: absolute;
+            bottom: 0;
+            width: 450px;
+            padding: 30px;
+            border: 2px solid white;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        .texts {
+            display: flex;
+            gap: 100px;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
@@ -85,10 +124,11 @@
     <section>
         <div class="main">
             <div class="left">
-                <h3>Nut: <span class="nut-cost">0</span></h3>
+                <h3>Nut: <span class="nut-cost">50000</span></h3>
                 <img src="./img/nut.png" alt="" class="nut-img" onclick="incrementNut()" draggable="false">
             </div>
             <div class="right">
+
                 <div class="upgrade" onclick="buyBolt()">
                     <div class="left-section">
                         <img src="./img/bolt.png" alt="" class="upgrade-img">
@@ -101,12 +141,69 @@
                         </div>
                     </div>
                     <div class="right-section">
-                        level 0
+                        level <span class="bolt-level">0</span>
+                    </div>
+                    <div class="nlvlinfo">
+                        <p>
+                            +<span class="bolt-increase">1</span> nuts <br /> per click
+                        </p>
                     </div>
                 </div>
+
+                <div class="upgrade" onclick="buyDoublenut()">
+                    <div class="left-section">
+                        <img src="./img/double nut.png" alt="" class="upgrade-img">
+                    </div>
+                    <div class="mid-section">
+                        <h4>Double nut</h4>
+                        <div class="cost-info">
+                            <p>cost: <span class="doublenut-cost">130</span></p>
+                            <img src="./img/nut.png" alt="" class="nut-image">
+                        </div>
+                    </div>
+                    <div class="right-section">
+                        level <span class="doublenut-level">0</span>
+                    </div>
+                    <div class="nlvlinfo">
+                        <p>
+                            +<span class="doublenut-increase">4</span> nuts <br /> per second
+                        </p>
+                    </div>
+                </div>
+
+                <div class="upgrade" onclick="buyWrench()">
+                    <div class="left-section">
+                        <img src="./img/wrench.png" alt="" class="upgrade-img">
+                    </div>
+                    <div class="mid-section">
+                        <h4>Wrench</h4>
+                        <div class="cost-info">
+                            <p>cost: <span class="wrench-cost">850</span></p>
+                            <img src="./img/nut.png" alt="" class="nut-image">
+                        </div>
+                    </div>
+                    <div class="right-section">
+                        level <span class="wrench-level">0</span>
+                    </div>
+                    <div class="nlvlinfo">
+                        <p>
+                            +<span class="wrench-increase">24</span> nuts <br /> per second
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
+
+        <div class="statistics">
+            <div class="texts">
+                <p>NPC: <span id="npc-text">1</span></p>
+                <p>NPS: <span id="nps-text">0</span></p>
+            </div>
+
+        </div>
     </section>
+
     <script src="clicker.js"></script>
 </body>
 </html>
