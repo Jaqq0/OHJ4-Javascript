@@ -1,23 +1,7 @@
 let nut = document.querySelector('.nut-cost');
 let parsedNut = parseFloat(nut.innerHTML);
 
-let boltCost = document.querySelector('.bolt-cost');
-let parsedBoltCost = parseFloat(boltCost.innerHTML);
-let boltLevel = document.querySelector('.bolt-level');
-let boltIncrease = document.querySelector('.bolt-increase');
-let parsedBoltIncrease = parseFloat(boltIncrease.innerHTML);
-
-let doublenutCost = document.querySelector('.doublenut-cost');
-let parsedDoublenutCost = parseFloat(doublenutCost.innerHTML);
-let doublenutLevel = document.querySelector('.doublenut-level');
-let doublenutIncrease = document.querySelector('.doublenut-increase');
-let parsedDoublenutIncrease = parseFloat(doublenutIncrease.innerHTML);
-
-let wrenchCost = document.querySelector('.wrench-cost');
-let parsedWrenchCost = parseFloat(wrenchCost.innerHTML);
-let wrenchLevel = document.querySelector('.wrench-level');
-let wrenchIncrease = document.querySelector('.wrench-increase');
-let parsedWrenchIncrease = parseFloat(wrenchIncrease.innerHTML);
+let nutImgContainer = document.querySelector('.nut-img-container');
 
 let npcText = document.getElementById('npc-text');
 let npsText = document.getElementById('nps-text');
@@ -26,54 +10,95 @@ let npc = 1;
 
 let nps = 0;
 
-function incrementNut() {
+const upgrades = [
+    {
+        name: 'bolt',
+        cost: document.querySelector('.bolt-cost'),
+        parsedCost: parseFloat(document.querySelector('.bolt-cost').innerHTML),
+        increase: document.querySelector('.bolt-increase'),
+        parsedIncrease: parseFloat(document.querySelector('.bolt-increase').innerHTML),
+        level: document.querySelector('.bolt-level'),
+        nutMultiplier: 1.025,
+        costMultiplier: 1.12,
+    },
+    {
+        name: 'doublenut',
+        cost: document.querySelector('.doublenut-cost'),
+        parsedCost: parseFloat(document.querySelector('.doublenut-cost').innerHTML),
+        increase: document.querySelector('.doublenut-increase'),
+        parsedIncrease: parseFloat(document.querySelector('.doublenut-increase').innerHTML),
+        level: document.querySelector('.doublenut-level'),
+        nutMultiplier: 1.03,
+        costMultiplier: 1.115,
+    },
+    {
+        name: 'wrench',
+        cost: document.querySelector('.wrench-cost'),
+        parsedCost: parseFloat(document.querySelector('.wrench-cost').innerHTML),
+        increase: document.querySelector('.wrench-increase'),
+        parsedIncrease: parseFloat(document.querySelector('.wrench-increase').innerHTML),
+        level: document.querySelector('.wrench-level'),
+        nutMultiplier: 1.035,
+        costMultiplier: 1.11,
+    },
+    {
+        name: 'gear',
+        cost: document.querySelector('.gear-cost'),
+        parsedCost: parseFloat(document.querySelector('.gear-cost').innerHTML),
+        increase: document.querySelector('.gear-increase'),
+        parsedIncrease: parseFloat(document.querySelector('.gear-increase').innerHTML),
+        level: document.querySelector('.gear-level'),
+        nutMultiplier: 1.04,
+        costMultiplier: 1.10,
+    },
+]
+
+function incrementNut(event) {
     nut.innerHTML = Math.round(parsedNut += npc);
+
+    const x = event.offsetX;
+    const y = event.offsetY;
+
+    const div = document.createElement('div');
+    div.innerHTML = `+${Math.round(npc)}`;
+    div.style.cssText = `color: white; position: absolute; top: ${y}px; left: ${x}px; font-size: 15px;pointer-events: none;`
+    nutImgContainer.appendChild(div);
+
+    div.classList.add('fade-up');
+
+    timeout(div);
 }
 
-function buyBolt() {
-    if (parsedNut >= parsedBoltCost) {
-        nut.innerHTML = Math.round(parsedNut -= parsedBoltCost);
+const timeout = (div) => {
+    setTimeout(() => {
+        div.remove();
+    }, 800)
+}
 
-        boltLevel.innerHTML ++
+function buyUpgrade(upgrade) {
+    const mu = upgrades.find((u) => {
+        if (u.name === upgrade) return u;
+    })
 
-        parsedBoltIncrease = parseFloat((parsedBoltIncrease * 1.03).toFixed(2));
-        boltIncrease.innerHTML = parsedBoltIncrease;
-        npc += parsedBoltIncrease;
+    if (parsedNut >= mu.parsedCost) {
+        nut.innerHTML = Math.round(parsedNut -= mu.parsedCost);
 
-        parsedBoltCost *= 1.18;
-        boltCost.innerHTML = Math.round(parsedBoltCost);
+        mu.level.innerHTML ++
+
+        mu.parsedIncrease = parseFloat((mu.parsedIncrease * mu.nutMultiplier).toFixed(2));
+        mu.increase.innerHTML = mu.parsedIncrease;
+
+        mu.parsedCost *= mu.costMultiplier;
+        mu.cost.innerHTML = Math.round(mu.parsedCost);
+
+        if (mu.name === 'bolt') {
+            npc += mu.parsedIncrease;
+        } else {
+            nps += mu.parsedIncrease;
+        }
     }
 }
 
-function buyDoublenut() {
-    if (parsedNut >= parsedDoublenutCost) {
-        nut.innerHTML = Math.round(parsedNut -= parsedDoublenutCost);
-
-        doublenutLevel.innerHTML ++
-
-        parsedDoublenutIncrease = parseFloat((parsedDoublenutIncrease * 1.03).toFixed(2));
-        doublenutIncrease.innerHTML = parsedDoublenutIncrease;
-        nps += parsedDoublenutIncrease;
-
-        parsedDoublenutCost *= 1.18;
-        doublenutCost.innerHTML = Math.round(parsedDoublenutCost);
-    }
-}
-
-function buyWrench() {
-    if (parsedNut >= parsedWrenchCost) {
-        nut.innerHTML = Math.round(parsedNut -= parsedWrenchCost);
-
-        wrenchLevel.innerHTML ++
-
-        parsedWrenchIncrease = parseFloat((parsedWrenchIncrease * 1.03).toFixed(2));
-        wrenchIncrease.innerHTML = parsedWrenchIncrease;
-        nps += parsedWrenchIncrease;
-
-        parsedWrenchCost *= 1.18;
-        wrenchCost.innerHTML = Math.round(parsedWrenchCost);
-    }
-}
 
 setInterval(() => {
     parsedNut += nps / 10;

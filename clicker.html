@@ -19,19 +19,20 @@
     <section class="game">
         <div class="main">
             <div class="left">
-                <p>Nut<br /><span class="nut-cost">50000</span></p>
-                <img src="./img/nut.png" alt="" class="nut-img" onclick="incrementNut()" draggable="false">
+                <p>Nuts<br /><span class="nut-cost color-text">50000</span></p>
+                <div class="nut-img-container"></div>
+                <img src="./img/nut.png" alt="" class="nut-img" onclick="incrementNut(event)" draggable="false">
             </div>
             <div class="right">
 
-                <div class="upgrade" onclick="buyBolt()">
+                <div class="upgrade" onclick="buyUpgrade('bolt')">
                     <div class="left-section">
                         <img src="./img/bolt.png" alt="" class="upgrade-img">
                     </div>
                     <div class="mid-section">
                         <h4>Strong bolt</h4>
                         <div class="cost-info">
-                            <p>cost: <span class="bolt-cost">10</span></p>
+                            <p class="cost-text"><span class="bolt-cost">10</span></p>
                             <img src="./img/nut.png" alt="" class="nut-image">
                         </div>
                     </div>
@@ -45,14 +46,14 @@
                     </div>
                 </div>
 
-                <div class="upgrade" onclick="buyDoublenut()">
+                <div class="upgrade" onclick="buyUpgrade('doublenut')">
                     <div class="left-section">
                         <img src="./img/double nut.png" alt="" class="upgrade-img">
                     </div>
                     <div class="mid-section">
                         <h4>Double nut</h4>
                         <div class="cost-info">
-                            <p>cost: <span class="doublenut-cost">130</span></p>
+                            <p class="cost-text"><span class="doublenut-cost">130</span></p>
                             <img src="./img/nut.png" alt="" class="nut-image">
                         </div>
                     </div>
@@ -66,14 +67,14 @@
                     </div>
                 </div>
 
-                <div class="upgrade" onclick="buyWrench()">
+                <div class="upgrade" onclick="buyUpgrade('wrench')">
                     <div class="left-section">
                         <img src="./img/wrench.png" alt="" class="upgrade-img">
                     </div>
                     <div class="mid-section">
                         <h4>Wrench</h4>
                         <div class="cost-info">
-                            <p>cost: <span class="wrench-cost">850</span></p>
+                            <p class="cost-text"><span class="wrench-cost">850</span></p>
                             <img src="./img/nut.png" alt="" class="nut-image">
                         </div>
                     </div>
@@ -87,13 +88,34 @@
                     </div>
                 </div>
 
+                <div class="upgrade" onclick="buyUpgrade('gear')">
+                    <div class="left-section">
+                        <img src="./img/double nut.png" alt="" class="upgrade-img">
+                    </div>
+                    <div class="mid-section">
+                        <h4>Gear</h4>
+                        <div class="cost-info">
+                            <p class="cost-text"><span class="gear-cost">4750</span></p>
+                            <img src="./img/nut.png" alt="" class="nut-image">
+                        </div>
+                    </div>
+                    <div class="right-section">
+                        level <span class="gear-level">0</span>
+                    </div>
+                    <div class="nlvlinfo">
+                        <p>
+                            +<span class="gear-increase">82</span> nuts <br /> per second
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
         <div class="statistics">
             <div class="texts">
-                <p>NPC: <span id="npc-text">1</span></p>
-                <p>NPS: <span id="nps-text">0</span></p>
+                <p>NPC: <span id="npc-text" class="color-text">1</span></p>
+                <p>NPS: <span id="nps-text" class="color-text">0</span></p>
             </div>
 
         </div>
