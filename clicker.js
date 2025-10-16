@@ -99,6 +99,40 @@ function buyUpgrade(upgrade) {
     }
 }
 
+function save () {
+    localStorage.clear();
+    upgrades.map((upgrades) => {
+        
+        const obj = JSON.stringify({
+            parsedLevel: parseFloat(upgrades.level.innerHTML),
+            parsedCost: upgrades.parsedCost,
+            parsedIncrease: upgrades.parsedIncrease,
+        })
+
+        localStorage.setItem(upgrades.name, obj);
+    })
+
+    localStorage.setItem('nut', parsedNut);
+    localStorage.setItem('npc', npc);
+    localStorage.setItem('nps', nps);
+}
+
+function load () {
+    upgrades.map((upgrade) => {
+        const saveValues = JSON.parse(localStorage.getItem(upgrade.name));
+
+        upgrade.parsedCost = saveValues.parsedCost;
+        upgrade.parsedIncrease = saveValues.parsedIncrease;
+        upgrade.level.innerHTML = saveValues.parsedLevel;
+        upgrade.cost.innerHTML = Math.round(upgrade.parsedCost);
+        upgrade.increase.innerHTML = upgrade.parsedIncrease;
+    })
+    npc = parseFloat(localStorage.getItem('npc'));
+    nps = parseFloat(localStorage.getItem('nps'));
+    parsedNut = parseFloat(localStorage.getItem('nut'));
+    nut.innerHTML = Math.round(parsedNut);
+}
+
 
 setInterval(() => {
     parsedNut += nps / 10;

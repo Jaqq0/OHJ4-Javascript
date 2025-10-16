@@ -140,6 +140,23 @@ body {
     font-weight: bold;
     font-size: 20px;
 }
+.util-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+.util-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+}
+.util-button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
 .fade-up {
     animation: fade-up 1s;
 }
