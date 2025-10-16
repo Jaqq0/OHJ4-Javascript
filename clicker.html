@@ -23,93 +23,34 @@
                 <div class="nut-img-container"></div>
                 <img src="./img/nut.png" alt="" class="nut-img" onclick="incrementNut(event)" draggable="false">
             </div>
-            <div class="right">
 
-                <div class="upgrade" onclick="buyUpgrade('bolt')">
+            <script id="upgrade-template" type="text/template">
+                <div class="upgrade" onclick="buyUpgrade('{{name}}')">
                     <div class="left-section">
-                        <img src="./img/bolt.png" alt="" class="upgrade-img">
+                        <img src="{{image}}" alt="" class="upgrade-img">
                     </div>
                     <div class="mid-section">
-                        <h4>Strong bolt</h4>
+                        <h4>{{name}}</h4>
                         <div class="cost-info">
-                            <p class="cost-text"><span class="bolt-cost">10</span></p>
+                            <p class="cost-text"><span class="{{name}}-cost">{{cost}}</span></p>
                             <img src="./img/nut.png" alt="" class="nut-image">
                         </div>
                     </div>
                     <div class="right-section">
-                        level <span class="bolt-level">0</span>
+                        level <span class="{{name}}-level">0</span>
                     </div>
                     <div class="nlvlinfo">
                         <p>
-                            +<span class="bolt-increase">1</span> nuts <br /> per click
+                            +<span class="{{name}}-increase">{{increase}}</span> nuts <br /> per click
                         </p>
                     </div>
                 </div>
+            </script>
 
-                <div class="upgrade" onclick="buyUpgrade('doublenut')">
-                    <div class="left-section">
-                        <img src="./img/double nut.png" alt="" class="upgrade-img">
-                    </div>
-                    <div class="mid-section">
-                        <h4>Double nut</h4>
-                        <div class="cost-info">
-                            <p class="cost-text"><span class="doublenut-cost">130</span></p>
-                            <img src="./img/nut.png" alt="" class="nut-image">
-                        </div>
-                    </div>
-                    <div class="right-section">
-                        level <span class="doublenut-level">0</span>
-                    </div>
-                    <div class="nlvlinfo">
-                        <p>
-                            +<span class="doublenut-increase">4</span> nuts <br /> per second
-                        </p>
-                    </div>
-                </div>
-
-                <div class="upgrade" onclick="buyUpgrade('wrench')">
-                    <div class="left-section">
-                        <img src="./img/wrench.png" alt="" class="upgrade-img">
-                    </div>
-                    <div class="mid-section">
-                        <h4>Wrench</h4>
-                        <div class="cost-info">
-                            <p class="cost-text"><span class="wrench-cost">850</span></p>
-                            <img src="./img/nut.png" alt="" class="nut-image">
-                        </div>
-                    </div>
-                    <div class="right-section">
-                        level <span class="wrench-level">0</span>
-                    </div>
-                    <div class="nlvlinfo">
-                        <p>
-                            +<span class="wrench-increase">24</span> nuts <br /> per second
-                        </p>
-                    </div>
-                </div>
-
-                <div class="upgrade" onclick="buyUpgrade('gear')">
-                    <div class="left-section">
-                        <img src="./img/double nut.png" alt="" class="upgrade-img">
-                    </div>
-                    <div class="mid-section">
-                        <h4>Gear</h4>
-                        <div class="cost-info">
-                            <p class="cost-text"><span class="gear-cost">4750</span></p>
-                            <img src="./img/nut.png" alt="" class="nut-image">
-                        </div>
-                    </div>
-                    <div class="right-section">
-                        level <span class="gear-level">0</span>
-                    </div>
-                    <div class="nlvlinfo">
-                        <p>
-                            +<span class="gear-increase">82</span> nuts <br /> per second
-                        </p>
-                    </div>
-                </div>
+            <div class="right" id="upgrades-container">
 
             </div>
+            
         </div>
 
         <div class="statistics">
@@ -126,6 +67,6 @@
         </div>
     </section>
 
-    <script src="clicker.js"></script>
+    <script type="module" src="clicker.js"></script>
 </body>
 </html>

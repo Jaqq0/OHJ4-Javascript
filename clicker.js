@@ -1,3 +1,5 @@
+import { upgrades } from "./constants/upgrades.js";
+
 let nut = document.querySelector('.nut-cost');
 let parsedNut = parseFloat(nut.innerHTML);
 
@@ -10,48 +12,6 @@ let npc = 1;
 
 let nps = 0;
 
-const upgrades = [
-    {
-        name: 'bolt',
-        cost: document.querySelector('.bolt-cost'),
-        parsedCost: parseFloat(document.querySelector('.bolt-cost').innerHTML),
-        increase: document.querySelector('.bolt-increase'),
-        parsedIncrease: parseFloat(document.querySelector('.bolt-increase').innerHTML),
-        level: document.querySelector('.bolt-level'),
-        nutMultiplier: 1.025,
-        costMultiplier: 1.12,
-    },
-    {
-        name: 'doublenut',
-        cost: document.querySelector('.doublenut-cost'),
-        parsedCost: parseFloat(document.querySelector('.doublenut-cost').innerHTML),
-        increase: document.querySelector('.doublenut-increase'),
-        parsedIncrease: parseFloat(document.querySelector('.doublenut-increase').innerHTML),
-        level: document.querySelector('.doublenut-level'),
-        nutMultiplier: 1.03,
-        costMultiplier: 1.115,
-    },
-    {
-        name: 'wrench',
-        cost: document.querySelector('.wrench-cost'),
-        parsedCost: parseFloat(document.querySelector('.wrench-cost').innerHTML),
-        increase: document.querySelector('.wrench-increase'),
-        parsedIncrease: parseFloat(document.querySelector('.wrench-increase').innerHTML),
-        level: document.querySelector('.wrench-level'),
-        nutMultiplier: 1.035,
-        costMultiplier: 1.11,
-    },
-    {
-        name: 'gear',
-        cost: document.querySelector('.gear-cost'),
-        parsedCost: parseFloat(document.querySelector('.gear-cost').innerHTML),
-        increase: document.querySelector('.gear-increase'),
-        parsedIncrease: parseFloat(document.querySelector('.gear-increase').innerHTML),
-        level: document.querySelector('.gear-level'),
-        nutMultiplier: 1.04,
-        costMultiplier: 1.10,
-    },
-]
 
 function incrementNut(event) {
     nut.innerHTML = Math.round(parsedNut += npc);
@@ -140,3 +100,8 @@ setInterval(() => {
     npcText.innerHTML = Math.round(npc);
     npsText.innerHTML = Math.round(nps);
 }, 100)
+
+window.incrementNut = incrementNut;
+window.buyUpgrade = buyUpgrade;
+window.save = save;
+window.load = load;

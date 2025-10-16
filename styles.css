@@ -47,7 +47,12 @@ body {
     font-size: 30px;
     margin-bottom: 50px;
 }
-
+.right {
+    max-height: 400px;
+    width: 550px;
+    padding: 20px 5px;
+    overflow-y: scroll;
+}
 .color-text {
     font-size: 32px;
     color: bisque;
@@ -185,4 +190,18 @@ body {
         transform: translateY(-60px);
         opacity: 0;
     }
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
