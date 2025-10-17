@@ -48,7 +48,7 @@ body {
     margin-bottom: 50px;
 }
 .right {
-    max-height: 400px;
+    max-height: 80vh;
     width: 550px;
     padding: 20px 5px;
     overflow-y: scroll;
