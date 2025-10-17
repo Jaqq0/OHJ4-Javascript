@@ -59,6 +59,15 @@ createUpgrades();
         nutMultiplier: 1.04,
         costMultiplier: 1.10,
     },
-    
+    {
+        name: 'bionicarm',
+        cost: document.querySelector('.bionicarm-cost'),
+        parsedCost: parseFloat(document.querySelector('.bionicarm-cost').innerHTML),
+        increase: document.querySelector('.bionicarm-increase'),
+        parsedIncrease: parseFloat(document.querySelector('.bionicarm-increase').innerHTML),
+        level: document.querySelector('.bionicarm-level'),
+        nutMultiplier: 1.05,
+        costMultiplier: 1.13,
+    },
 ]
 
